@@ -7,7 +7,7 @@ Update the IPv4 for the Hurricane Electric IPv6 Tunnel service for users with no
 ### Short Format
 `hedynip a -u <ACCOUNT_USERNAME> - p <ACCOUNT_PASSWORD>`
 
-##List single tunnel
+## List single tunnel
 ### Long Format
 `hedynip tunnel --id=<TUNNEL_ID> --username=<ACCOUNT_USERNAME> --password=<ACCOUNT_PASSWORD> or <TUNNEL_UPDATE_KEY>`
 ### Short Format
