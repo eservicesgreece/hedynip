@@ -1,6 +1,22 @@
 # hedynip
 Update the IPv4 for the Hurricane Electric IPv6 Tunnel service for users with non static IPv4
 
+## OS & Arch Support
+* Linux - amd64, 386, arm, arm64, mips, mipsle, ppc64, ppc64le, s390x
+* Windows - 386, amd64
+* OS X - 386, amd64
+* Dragonfly - amd64
+* FreeBSD - 386, amd64, arm
+* NetBSD - 386, amd64, arm
+* openBSD - 386, amd64
+* Solaris - amd64
+
+## Build
+In most cases this is enough to build:
+```
+go get github.com/eservicesgreece/hedynip
+```
+
 ## List all Tunnels
 ### Long Format
 `hedynip all --username=<ACCOUNT_USERNAME> --password=<ACCOUNT_PASSWORD>`
@@ -25,3 +41,9 @@ if --ip or -m are not provided hedynip will get the IPv4 automatically.
 `hedynip getmyip`
 ### Short Format
 `hedynip g`
+
+***
+
+## 3rd Party Libraries Used
+* kingpin | https://github.com/alecthomas/kingpin
+* tablewriter | https://github.com/olekukonko/tablewriter
