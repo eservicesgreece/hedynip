@@ -25,9 +25,7 @@ type Tunnel struct {
 }
 
 func listTunnels(username, password string) {
-
-	rawXML := getTunnelXML("https://tunnelbroker.net/tunnelInfo.php", username, password)
-
+	rawXML := getDATA("https://tunnelbroker.net/tunnelInfo.php", username, password)
 	var tunnels Tunnels
 	xml.Unmarshal([]byte(rawXML), &tunnels)
 
@@ -40,7 +38,7 @@ func listTunnels(username, password string) {
 }
 
 func listTunnelbyID(tunnelID, username, password string) {
-	rawXML := getTunnelXML("https://tunnelbroker.net/tunnelInfo.php?tid="+tunnelID, username, password)
+	rawXML := getDATA("https://tunnelbroker.net/tunnelInfo.php?tid="+tunnelID, username, password)
 	var tunnels Tunnels
 	xml.Unmarshal([]byte(rawXML), &tunnels)
 
@@ -51,6 +49,6 @@ func listTunnelbyID(tunnelID, username, password string) {
 }
 
 func updateTunnelIPv4(TunnelID, currentIPv4, username, password string) {
-	rawReply := getTunnelXML("https://ipv4.tunnelbroker.net/nic/update?hostname="+TunnelID+"&myip="+currentIPv4, username, password)
+	rawReply := getDATA("https://ipv4.tunnelbroker.net/nic/update?hostname="+TunnelID+"&myip="+currentIPv4, username, password)
 	fmt.Println(rawReply)
 }

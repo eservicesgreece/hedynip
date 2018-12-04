@@ -10,7 +10,7 @@ type IPv4 struct {
 }
 
 func getIPv4() string {
-	rawJSON := getIPv4Json("https://api.eservices-greece.net/dns/myip.json")
+	rawJSON := getDATA("https://api4.eservices-greece.net/dns/myip.json", "", "")
 	var publicIPv4 IPv4
 
 	json.Unmarshal([]byte(rawJSON), &publicIPv4)
