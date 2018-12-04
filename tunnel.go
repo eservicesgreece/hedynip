@@ -23,13 +23,22 @@ type Tunnel struct {
 	ClientV6    string   `xml:"clientv6"`
 	Routed64    string   `xml:"routed64"`
 	Routed48    string   `xml:"routed48"`
+	Rdns1       string   `xml:"rdns1"`
+	Rdns2       string   `xml:"rdns2"`
+	Rdns3       string   `xml:"rdns3"`
+	Rdns4       string   `xml:"rdns4"`
+	Rdns5       string   `xml:"rdns5"`
 }
 
 func listTunnels(username, password string) {
 	rawXML := getDATA("https://tunnelbroker.net/tunnelInfo.php", username, password)
 	var tunnels Tunnels
-	xml.Unmarshal([]byte(rawXML), &tunnels)
-
+	err := xml.Unmarshal([]byte(rawXML), &tunnels)
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println("No Data Returned - Check Username & Password")
+		os.Exit(1)
+	}
 	var printTunnels [][]string
 	for k := range tunnels.TunnelList {
 		printTunnels = append(printTunnels, []string{tunnels.TunnelList[k].ID, tunnels.TunnelList[k].Description, tunnels.TunnelList[k].ServerV4, tunnels.TunnelList[k].ClientV4, tunnels.TunnelList[k].ServerV6, tunnels.TunnelList[k].ClientV6, tunnels.TunnelList[k].Routed64, tunnels.TunnelList[k].Routed48})
@@ -50,8 +59,13 @@ func listTunnelbyID(tunnelID, username, password string) {
 
 	var TunnelbyID [][]string
 	TunnelbyID = append(TunnelbyID, []string{tunnels.TunnelList[0].ID, tunnels.TunnelList[0].Description, tunnels.TunnelList[0].ServerV4, tunnels.TunnelList[0].ClientV4, tunnels.TunnelList[0].ServerV6, tunnels.TunnelList[0].ClientV6, tunnels.TunnelList[0].Routed64, tunnels.TunnelList[0].Routed48})
-
 	printTunnelInfo(TunnelbyID)
+
+	fmt.Println("")
+
+	var rDNS [][]string
+	rDNS = append(rDNS, []string{tunnels.TunnelList[0].Rdns1, tunnels.TunnelList[0].Rdns2, tunnels.TunnelList[0].Rdns3, tunnels.TunnelList[0].Rdns4, tunnels.TunnelList[0].Rdns5})
+	printTunnelrDNS(rDNS)
 }
 
 func updateTunnelIPv4(TunnelID, currentIPv4, username, password string) {

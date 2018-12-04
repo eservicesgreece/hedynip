@@ -1,4 +1,9 @@
-9dab691 (HEAD -> master, tag: 0.0.4, origin/master, origin/HEAD) Update README.md
+5e96574 (HEAD -> master, origin/master, origin/HEAD) small fix to get the correct tunnel id for the updateTunnelIPv4 function
+6db85bb Updated README.md to make it more legible
+bd2494f Added support for configuration files - fixes #1
+f8ac7bb Remove CHANGELOG file used by the builder.
+106b570 Switched the pinned ipv4 api for retrieveing IPv4 always - fixes #4
+9dab691 (tag: 0.0.4) Update README.md
 61c8be0 Initial Release (v0.0.4) Fully functional
 3cc8dac Update README.md
 d385b15 Update README.md
