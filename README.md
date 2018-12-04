@@ -17,6 +17,8 @@ In most cases this is enough to build:
 go get github.com/eservicesgreece/hedynip
 ```
 
+***
+
 ## Set Configuration File & Location
 It will accept a full path and the file name can be any valid filename
 ### Long Format
@@ -25,17 +27,23 @@ It will accept a full path and the file name can be any valid filename
 ### Short Format
 `hedynip -c hedynip.json`
 
+***
+
 ## List all Tunnels
 ### Long Format
 `hedynip all --username=<ACCOUNT_USERNAME> --password=<ACCOUNT_PASSWORD>`
 ### Short Format
 `hedynip a -u <ACCOUNT_USERNAME> - p <ACCOUNT_PASSWORD>`
 
+***
+
 ## List single tunnel
 ### Long Format
 `hedynip tunnel --id=<TUNNEL_ID> --username=<ACCOUNT_USERNAME> --password=<ACCOUNT_PASSWORD> or <TUNNEL_UPDATE_KEY>`
 ### Short Format
 `hedynip t -i <TUNNEL_ID> -u <ACCOUNT_USERNAME> -p <ACCOUNT_PASSWORD> or <TUNNEL_UPDATE_KEY>`
+
+***
 
 ## Update IPv4
 if --ip or -m are not provided hedynip will get the IPv4 automatically.
@@ -44,18 +52,24 @@ if --ip or -m are not provided hedynip will get the IPv4 automatically.
 ### Short Format
 `hedynip update -i <TUNNEL_ID> -m <CLIENT IPV4>  -u <ACCOUNT_USERNAME> -p <ACCOUNT_PASSWORD> or <TUNNEL_UPDATE_KEY>`
 
+***
+
 ## Get local IPv4
 ### Long Format
 `hedynip getmyip`
 ### Short Format
 `hedynip g`
 
-## Show Current Configuration (it will read hedynip.json or the configuration file provided by -c)
+***
+
+## Show Current Configuration 
+it will read hedynip.json or the configuration file provided by -c, --config
 ### Long Format
 `hedynip showconfig`
-
 ### Short Format
 `hedynip s`
+
+***
 
 ## Config file format
 You can add as many tunnel_id tags you want
