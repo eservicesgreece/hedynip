@@ -9,6 +9,7 @@ import (
 func getDATA(url, username, password string) string {
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
+
 	if username != "" && password != "" {
 		req.SetBasicAuth(username, password)
 	}
