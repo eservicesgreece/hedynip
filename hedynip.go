@@ -69,7 +69,7 @@ func main() {
 		listTunnelbyID(*listtunnelid, username, password)
 
 	case updateIP.FullCommand():
-		updatekey, _ := config.StringMap(*listtunnelid)
+		updatekey, _ := config.StringMap(*updateIPtunnelid)
 		password = updatekey["updatekey"]
 
 		if username == "" || password == "" {
