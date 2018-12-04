@@ -1,0 +1,11 @@
+{
+    "name": "hedynip",
+    "version": "1",
+    "credentials": {
+        "username": "",
+        "password": ""
+    },
+    "tunnel_id": {
+        "updatekey": ""
+    }
+}

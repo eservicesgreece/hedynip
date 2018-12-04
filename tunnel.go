@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/xml"
 	"fmt"
+	"os"
 )
 
 //Tunnels is the struct holding all found Hurricane Electric Tunnels in the account
@@ -40,7 +41,12 @@ func listTunnels(username, password string) {
 func listTunnelbyID(tunnelID, username, password string) {
 	rawXML := getDATA("https://tunnelbroker.net/tunnelInfo.php?tid="+tunnelID, username, password)
 	var tunnels Tunnels
-	xml.Unmarshal([]byte(rawXML), &tunnels)
+	err := xml.Unmarshal([]byte(rawXML), &tunnels)
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println("No Data Returned - Check Username & Password")
+		os.Exit(1)
+	}
 
 	var TunnelbyID [][]string
 	TunnelbyID = append(TunnelbyID, []string{tunnels.TunnelList[0].ID, tunnels.TunnelList[0].Description, tunnels.TunnelList[0].ServerV4, tunnels.TunnelList[0].ClientV4, tunnels.TunnelList[0].ServerV6, tunnels.TunnelList[0].ClientV6, tunnels.TunnelList[0].Routed64, tunnels.TunnelList[0].Routed48})

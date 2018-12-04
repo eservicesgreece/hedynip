@@ -11,20 +11,20 @@ var githash string
 var (
 	app = kingpin.New("hedynip", fullversion())
 
-	listall         = kingpin.Command("all", "List All Tunnels").Alias("a")
-	listallusername = listall.Flag("username", "Account Username").Short('u').Required().String()
-	listallpassword = listall.Flag("password", "Account Password").Short('p').Required().String()
+	cmdusername = kingpin.Flag("username", "Account Username").Short('u').String()
+	cmdpassword = kingpin.Flag("password", "Account Password").Short('p').String()
 
-	listtunnel         = kingpin.Command("tunnel", "Lists Tunnel Details").Alias("t")
-	listtunnelid       = listtunnel.Flag("id", "Tunnel ID").Short('i').Short('i').Required().String()
-	listtunnelusername = listtunnel.Flag("username", "Account Username").Short('u').Required().String()
-	listtunnelpassword = listtunnel.Flag("password", "Account Password or Update Key if set").Short('p').Required().String()
+	listall = kingpin.Command("all", "List All Tunnels").Alias("a")
 
-	updateIP               = kingpin.Command("update", "Update IP").Alias("d")
-	updateIPtunnelid       = updateIP.Flag("id", "Tunnel ID").Short('i').Required().String()
-	updateIPtunnelIP       = updateIP.Flag("ip", "Set IP Manually").Short('m').String()
-	updateIPtunnelusername = updateIP.Flag("username", "Account Username").Short('u').Required().String()
-	updateIPtunnelpassword = updateIP.Flag("password", "Account Password or Update Key if set").Short('p').Required().String()
+	listtunnel   = kingpin.Command("tunnel", "Lists Tunnel Details").Alias("t")
+	listtunnelid = listtunnel.Flag("id", "Tunnel ID").Short('i').Short('i').Required().String()
+
+	updateIP         = kingpin.Command("update", "Update IP").Alias("d")
+	updateIPtunnelid = updateIP.Flag("id", "Tunnel ID").Short('i').Required().String()
+	updateIPtunnelIP = updateIP.Flag("ip", "Set IP Manually").Short('m').String()
 
 	getmyip = kingpin.Command("getmyip", "Get my IPv4").Alias("g")
+
+	configlocation = kingpin.Flag("config", "Configuration file location").Short('c').String()
+	showconfig     = kingpin.Command("showconfig", "Show Current Configuration").Alias("s")
 )

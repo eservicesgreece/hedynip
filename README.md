@@ -17,6 +17,14 @@ In most cases this is enough to build:
 go get github.com/eservicesgreece/hedynip
 ```
 
+## Set Configuration File & Location
+It will accept a full path and the file name can be any valid filename
+### Long Format
+`hedynip --config=hedynip.json`
+
+### Short Format
+`hedynip -c hedynip.json`
+
 ## List all Tunnels
 ### Long Format
 `hedynip all --username=<ACCOUNT_USERNAME> --password=<ACCOUNT_PASSWORD>`
@@ -42,8 +50,53 @@ if --ip or -m are not provided hedynip will get the IPv4 automatically.
 ### Short Format
 `hedynip g`
 
+## Show Current Configuration (it will read hedynip.json or the configuration file provided by -c)
+### Long Format
+`hedynip showconfig`
+
+### Short Format
+`hedynip s`
+
+## Config file format
+You can add as many tunnel_id tags you want
+```
+{
+    "name": "hedynip",
+    "version": "1",
+    "credentials": {
+        "username": "",
+        "password": ""
+    },
+    "tunnel_id": {
+        "updatekey": ""
+    }
+}
+```
+Example:
+```
+{
+    "name": "hedynip",
+    "version": "1",
+    "credentials": {
+        "username": "myusername",
+        "password": "mypassword"
+    },
+    "000000": {
+        "updatekey": "xD2YdAnNnhlMwYf3qX7n3Y"
+    },
+    "111111": {
+        "updatekey": "J0QjHjjd8sbtXaseiq3PyY"
+    }    
+}
+```
+
 ***
 
 ## 3rd Party Libraries Used
 * kingpin | https://github.com/alecthomas/kingpin
 * tablewriter | https://github.com/olekukonko/tablewriter
+* config | https://github.com/gookit/config
+
+***
+
+eSGR is not affiliated with or endorsed by Hurricane Electric (https://he.net)

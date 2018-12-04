@@ -9,6 +9,9 @@ import (
 func getDATA(url, username, password string) string {
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	if username != "" && password != "" {
 		req.SetBasicAuth(username, password)
@@ -20,6 +23,9 @@ func getDATA(url, username, password string) string {
 	}
 
 	bodyText, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
 	s := string(bodyText)
 	return s
 }
